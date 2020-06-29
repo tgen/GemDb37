@@ -1,0 +1,5 @@
+filePath:rules.ivy.090215.tsv
+mdsub: 884f9640dc38d135b282d2518e5f2bc8 wc: 6187
+
+-Module insertRules function:insertRules filepath:rules.ivy.090215.tsv collection:rules hostname:it5355.ad.tgen.org:27017  adding rules rules.ivy.090215.tsv
+Finished.

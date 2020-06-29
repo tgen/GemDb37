@@ -1,0 +1,27 @@
+#*/15 * * * * /labs/su2c/reportBin/GemDb/GemDb3.SU2C.pl clean=1
+#50 8 * * * rm /labs/su2c/reportBin/GemDb/runDir/*CLEAN*
+
+## Insert statistics
+55 10 * * * perl /labs/ngd-data/GemDb/stats/stats_insert_secureITv1.0.pl -c /labs/ngd-data/prodCentralDB/labdb1/stats/statsLabdb1Prod.conf
+20 11 * * * /labs/ngd-data/prodCentralDB/labdb1/utils/wrapperJson.pl labdb01.tgen.org 25755 markers /labs/ngd-data/prodCentralDB/labdb1/utils /labs/ngd-data/reports/C024/
+
+## Gemdb build 37
+*/15 * * * * perl /labs/ngd-data/prodCentralDB/GemDb/GemDb37.PROD.pl >> /labs/ngd-data/prodCentralDB/GemDb/logs/runGemDbLOG.txt 2>&1
+59 23 * * * pkill GemDb; perl /labs/ngd-data/prodCentralDB//GemDb37/GemDb3.PROD.pl clean=1
+
+## Gemdb build 38
+*/43 * * * * perl /labs/ngd-data/prodCentralDB/GemDb38/GemDb38.PROD.pl >> /labs/ngd-data/prodCentralDB/GemDb38/logs/runGemDb38LOG.txt 2>&1
+23 03 * * * pkill GemDb38; perl /labs/ngd-data/prodCentralDB//GemDb/GemDb38.PROD.pl clean=1
+
+## Check mongo processes
+*/10 * * * * /data/db/devGEMDB/checkMongoProcess.sh >> /data/db/devGEMDB/logs/checkMongodProcessLog.txt 2>&1
+
+#BCC
+#*/50 * * * * perl /labs/ngd-data/prodCentralDB/GemDb/GemDb3.BCCTMP.pl >> /labs/ngd-data/prodCentralDB/GemDb/logs/runGemDbLOG.txt 2>&1
+#02 14 * * * python3.6 -u /labs/ngd-data/prodCentralDB/GEM/annotate/annotate.py >> /labs/ngd-data/prodCentralDB/GEM/log/run_annotateLOG.txt 2>&1
+
+##### MULTI-OMIC #####
+#*/25 * * * * /labs/ngd-data/prodCentralDB/multiomic-insert/./runMultiomic.sh
+
+## Print to crontab
+33 9 * * * crontab -l > /home/tizatt/crontabs/crontab.diva.txt
