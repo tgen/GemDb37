@@ -4,7 +4,7 @@
 # * TGen CONFIDENTIAL
 # * __________________
 # *
-# *  [2010] - [2014] Translational Genomics Research Institute (TGen)
+# *  [2020] - [2024] Translational Genomics Research Institute (TGen)
 # *  All Rights Reserved.
 # *
 # * NOTICE:  All information contained herein is, and remains
@@ -17,8 +17,8 @@
 # * from TGen.
 # *
 # * Author (s):
+#    Tyler Izatt
 #    David Craig
-#    Release 3/23/15
 #/
 ######################################################################################
 package Conf;
